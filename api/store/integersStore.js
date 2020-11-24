@@ -9,17 +9,18 @@ class IntegersStore extends BaseStore {
 
   async updateByAccountId (accountId, nextValue) {
     const integers = await super.read();
+    const updatedInteger = {
+      accountId,
+      current: nextValue
+    };
     const integersUpdated = integers.map((integer) => {
       if (integer.accountId === accountId) {
-        return {
-          accountId,
-          current: nextValue
-        };
+        return updatedInteger;
       }
       return integer;
     });
     super.write(integersUpdated);
-    return integersUpdated;
+    return updatedInteger;
   }
 
   async create (integer) {
