@@ -1,3 +1,8 @@
 node_modules
 .vs_code
 package-lock.json
+.env
+
+# Generated Store files
+accounts.json
+integers.json
