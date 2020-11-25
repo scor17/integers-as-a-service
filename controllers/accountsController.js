@@ -3,6 +3,7 @@ const makeController = require('../helpers/makeController');
 const ApiError = require('../errors/ApiError');
 const accountsService = require('../services/accountsService');
 const { getAccountId } = require('../helpers/controllerHelpers');
+const validator = require('validator');
 
 async function get (req, res) {
   const accountId = getAccountId(req);
@@ -13,7 +14,7 @@ async function get (req, res) {
 
 async function post (req, res) {
   const { email, password } = req.body;
-  if (!email || typeof email !== 'string') {
+  if (!email || typeof email !== 'string' || !validator.isEmail(email)) {
     throw new ApiError(HttpStatus.BAD_REQUEST, 'Invalid Email in request body.');
   }
 
