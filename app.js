@@ -23,7 +23,7 @@ async function init () {
   const router = express.Router();
   router.post('/auth', authController.login);
 
-  router.post('/accounts', authorize, accountsController.post);
+  router.post('/accounts', accountsController.post);
   router.get('/accounts', authorize, accountsController.get);
 
   router.get('/current', authorize, integersController.get);
