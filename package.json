@@ -24,7 +24,8 @@
     "express": "^4.17.1",
     "http-status-codes": "^2.1.4",
     "jsonwebtoken": "^8.5.1",
-    "uuid": "^8.3.1"
+    "uuid": "^8.3.1",
+    "validator": "^13.1.17"
   },
   "devDependencies": {
     "semistandard": "^16.0.0"
