@@ -20,6 +20,13 @@ async function init () {
   console.log('Starting app...');
   app.use(bodyParser.json());
 
+  app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', process.env.ALLOWED_ORIGIN);
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT');
+    res.setHeader('Access-Control-Allow-Headers', 'content-type');
+    next();
+  });
+
   const router = express.Router();
   router.post('/auth', authController.login);
 
@@ -33,6 +40,7 @@ async function init () {
   app.use('/v1', router);
 
   app.use(globalErrorHandler);
+
   app.listen(PORT, () => console.log(`App started. Listening on: http://localhost:${PORT}`));
 }
 
