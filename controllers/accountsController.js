@@ -2,6 +2,7 @@ const HttpStatus = require('http-status-codes');
 const makeController = require('../helpers/makeController');
 const ApiError = require('../errors/ApiError');
 const accountsService = require('../services/accountsService');
+const authService = require('../services/authService');
 const { getAccountId } = require('../helpers/controllerHelpers');
 const validator = require('validator');
 
@@ -28,6 +29,7 @@ async function post (req, res) {
   }
   const account = await accountsService.createAccount(email, password);
   delete account.password;
+  account.token = authService.createBearer(account.id, email);
   res.status(HttpStatus.CREATED).send(account);
 }
 
