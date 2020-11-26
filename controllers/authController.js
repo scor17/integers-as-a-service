@@ -3,6 +3,9 @@ const HttpStatus = require('http-status-codes');
 const ApiError = require('../errors/ApiError');
 const authService = require('../services/authService');
 const accountsService = require('../services/accountsService');
+const { mapToApiResponse } = require('../helpers/controllerHelpers');
+
+const TYPE = 'auth';
 
 async function login (req, res) {
   const { email, password } = req.body;
@@ -20,7 +23,7 @@ async function login (req, res) {
 
   const account = await accountsService.getAccountByEmail(email);
   const session = authService.createBearer(account.id, email);
-  res.send(HttpStatus.CREATED, { token: session });
+  res.send(HttpStatus.CREATED, mapToApiResponse(TYPE, { token: session }));
 }
 
 module.exports = makeController({
