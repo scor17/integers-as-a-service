@@ -37,8 +37,8 @@ module.exports = {
       email,
       password: await hash(password, SALT_LENGTH)
     };
-    await AccountsStore.create(account);
     await integersService.setInteger(account.id);
+    await AccountsStore.create(account);
     return account;
   }
 };
