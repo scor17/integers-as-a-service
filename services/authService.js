@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 const util = require('util');
-const HttpStatus = require('http-status-codes');
 
 const verifyJwt = util.promisify(jwt.verify);
 
@@ -23,22 +22,7 @@ async function verifyBearer (token) {
   }
 }
 
-async function authorizeRequest (req, res, next) {
-  const authHeader = req.headers.authorization;
-
-  if (authHeader) {
-    const token = authHeader.split(' ')[1];
-    const user = await verifyBearer(token);
-    if (user) {
-      req.user = user;
-      return next();
-    }
-  }
-  res.send(HttpStatus.UNAUTHORIZED, { message: 'Unauthorized.', code: 'UNAUTHORIZED' });
-}
-
 module.exports = {
   createBearer,
-  verifyBearer,
-  authorizeRequest
+  verifyBearer
 };
