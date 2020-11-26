@@ -48,9 +48,9 @@ async function init () {
   router.post('/accounts', accountsController.post);
   router.get('/accounts', authorize, accountsController.get);
 
-  router.get('/current', authorize, integersController.get);
-  router.put('/current', authorize, integersController.put);
-  router.post('/next', authorize, integersController.post);
+  router.get('/integers/current', authorize, integersController.get);
+  router.put('/integers/current', authorize, integersController.put);
+  router.post('/integers/next', authorize, integersController.post);
 
   app.use('/v1', router);
 
