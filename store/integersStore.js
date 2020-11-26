@@ -7,9 +7,10 @@ class IntegersStore extends BaseStore {
     return integer;
   }
 
-  async updateByAccountId (accountId, nextValue) {
+  async updateByAccountId (id, accountId, nextValue) {
     const integers = await super.read();
     const updatedInteger = {
+      id,
       accountId,
       current: nextValue
     };

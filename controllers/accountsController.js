@@ -3,14 +3,16 @@ const makeController = require('../helpers/makeController');
 const ApiError = require('../errors/ApiError');
 const accountsService = require('../services/accountsService');
 const authService = require('../services/authService');
-const { getAccountId } = require('../helpers/controllerHelpers');
+const { getAccountId, mapToApiResponse } = require('../helpers/controllerHelpers');
 const validator = require('validator');
+
+const TYPE = 'accounts';
 
 async function get (req, res) {
   const accountId = getAccountId(req);
   const account = await accountsService.getAccountById(accountId);
   delete account.password;
-  res.status(HttpStatus.OK).send(account);
+  res.status(HttpStatus.OK).send(mapToApiResponse(TYPE, account));
 }
 
 async function post (req, res) {
@@ -30,7 +32,7 @@ async function post (req, res) {
   const account = await accountsService.createAccount(email, password);
   delete account.password;
   account.token = authService.createBearer(account.id, email);
-  res.status(HttpStatus.CREATED).send(account);
+  res.status(HttpStatus.CREATED).send(mapToApiResponse(TYPE, account));
 }
 
 module.exports = makeController({
