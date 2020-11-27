@@ -20,7 +20,7 @@ async function post (req, res) {
 async function put (req, res) {
   const body = parseAndValidateBody(req.body, INTEGERS, (attributes) => {
     const { current } = attributes;
-    if (!current || !Number.isInteger(current)) {
+    if (!current == null || !Number.isInteger(current)) {
       throw new ApiError(HttpStatus.BAD_REQUEST, 'Current must be a number');
     }
 
