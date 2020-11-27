@@ -24,7 +24,10 @@ UI: https://scor17.github.io/integers-ui/
 * No specifc format was required, I chose JWT so that I could include identity info, but it's not traditional for API Keys
 
 #### Data storage
-* We wouldn't need to enable concurrent writes for this assignment, I used a file based storage system so there could be data loss if multiple write requests were happening at the same time
+* We wouldn't need to enable concurrent writes 
+* Wouldn't need to handle vast amounts of data
+
+(I used a file based storage system it would not handle either of these situations well)
 
 #### API Endpoints
 * Routes and request payload provided were just guidelines and not exactly what should be implemented
