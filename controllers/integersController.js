@@ -23,6 +23,10 @@ async function put (req, res) {
     if (!current || !Number.isInteger(current)) {
       throw new ApiError(HttpStatus.BAD_REQUEST, 'Current must be a number');
     }
+
+    if (current < 0) {
+      throw new ApiError(HttpStatus.BAD_REQUEST, 'Current must not be negative');
+    }
   });
 
   const { current } = body.attributes;
