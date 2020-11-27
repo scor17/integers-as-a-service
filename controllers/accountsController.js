@@ -10,6 +10,10 @@ const { ACCOUNTS } = require('../constants/resourceType');
 async function get (req, res) {
   const accountId = getAccountId(req);
   const account = await accountsService.getAccountById(accountId);
+  if (!account) {
+    throw new ApiError(HttpStatus.NOT_FOUND, 'Could not find account.');
+  }
+
   delete account.password;
   res.status(HttpStatus.OK).send(mapToApiResponse(ACCOUNTS, account));
 }

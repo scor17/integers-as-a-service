@@ -24,7 +24,7 @@ async function authorize (req, res, next) {
       return next();
     }
   }
-  res.send(HttpStatus.UNAUTHORIZED, { message: 'Unauthorized.', code: 'UNAUTHORIZED' });
+  res.send(HttpStatus.UNAUTHORIZED, { errors: [{ message: 'Unauthorized.', code: 'UNAUTHORIZED' }] });
 }
 
 async function init () {
