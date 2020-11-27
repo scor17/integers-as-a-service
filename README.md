@@ -10,7 +10,7 @@ Thanks for taking the time to review my submission :)
 
 ### Location of deployed application
 
-Service: https://integers-as-a-service.herokuapp.com/v1
+Service: https://integers-as-a-service.herokuapp.com/v1  
 UI: https://scor17.github.io/integers-ui/
 
 ### Time spent
