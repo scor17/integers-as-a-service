@@ -31,7 +31,7 @@ Returns
 Your account will be returned based on the accountId contained in the token.
 ```
 GET /v1/accounts
-Bearer {Your bearer Token}
+Authorization: Bearer {Your bearer Token}
 
 Returns
 {
@@ -74,6 +74,7 @@ Returns
 `/integers` routes for the main business logic around integer generation.
 ```
 GET /v1/integers/current
+Authorization: Bearer {Your bearer Token}
 
 Returns
 {
@@ -90,6 +91,7 @@ Returns
 
 ```
 PUT /v1/integers/current
+Authorization: Bearer {Your bearer Token}
 
 Body
 {
@@ -116,6 +118,7 @@ Returns
 
 ```
 POST /v1/integers/next
+Authorization: Bearer {Your bearer Token}
 
 Returns
 {
