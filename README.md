@@ -77,10 +77,10 @@ REACT_APP_API_BASE_URL={API URL eg. http://localhost:8080/v1}
 Run `npm install` and `npm run start`
 
 ### What did you not include in your solution that you want us to know about?
-I implemented an auth API to get a new API key if you've lost the previous one. You pass your email and password and it will compare password hashes and serve up a new token if valid.
+Nothing that I didn't already mention above.
 
 ### Other information about your submission that you feel it's important that we know if applicable.
-N/A
+I implemented an auth API to get a new API key if you've lost the previous one. You pass your email and password and it will compare password hashes and serve up a new token if valid.
 
 ### Your feedback on this technical challenge
 
